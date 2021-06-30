@@ -192,7 +192,7 @@ def zeroshot_classifier(classnames, templates,model):
 
 def GetDt(classnames,model):
     text_features=zeroshot_classifier(classnames, imagenet_templates,model).t()
-    
+    print("text features : ",text_features)
     dt=text_features[0]-text_features[1]
     dt=dt.cpu().numpy()
     
@@ -200,6 +200,7 @@ def GetDt(classnames,model):
 #    dt=text_features.cpu().numpy()[0]-t_m1
     print(np.linalg.norm(dt))
     dt=dt/np.linalg.norm(dt)
+    print("dt : ",dt)
     return dt
 
 
